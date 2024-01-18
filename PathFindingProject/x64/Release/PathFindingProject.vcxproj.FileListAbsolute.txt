@@ -1,0 +1,1 @@
+C:\Users\rpist\Desktop\VS\PathFindingProject\PathFindingProject\x64\Release\PathFindingProject.vcxproj.CopyComplete
