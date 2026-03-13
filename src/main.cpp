@@ -324,7 +324,7 @@ Rectangle Muro{ Inizio.x + (Inizio.width + Fine.width + 20 - 100) / 2,Inizio.y +
 
 Rectangle Start{ Inizio.x + (Inizio.width + Fine.width + 20 - 200) / 2,Muro.y + Muro.height + 50, 200,50 };
 
-Rectangle random{ Start.x,Inizio.y - Inizio.width,Start.width,Start.height };
+Rectangle randomRectangle{ Start.x,Inizio.y - Inizio.width,Start.width,Start.height };
 
 Rectangle speedSelector{ Start.x,Start.y + Start.height + 80,Start.width,20 };
 Rectangle speedSlider{ speedSelector.x + speedSelector.width - explorationSpeed - 50,speedSelector.y - 3,50,speedSelector.height + 6 };
@@ -503,7 +503,7 @@ bool processInput()
 				roadFound = false;
 				startThread = true;
 			}
-			else if (CheckCollisionPointRec(GetMousePosition(), random))
+			else if (CheckCollisionPointRec(GetMousePosition(), randomRectangle))
 			{
 				startThread = false;
 				generateRandom();
@@ -523,6 +523,8 @@ bool processInput()
 			tiles[y][x].fVal = INT_MAX - 1;
 		}
 	}
+
+	return true;
 }
 
 void drawSpeedSelector()
@@ -537,7 +539,7 @@ void drawSpeedSelector()
 	DrawRectangleRec(speedSlider, BLACK);
 }
 
-//disegna il selettore di modalità di disegno
+//disegna il selettore di modalitï¿½ di disegno
 void drawTypeSelector()
 {
 	int textX = (Inizio.width - MeasureText("Inizio", 20)) / 2;
@@ -569,16 +571,16 @@ void drawStart()
 	DrawText("Inizia esplorazione", Start.x + textX, Start.y + 15, 20, BLACK);
 }
 
-//disegna bottone genera random
+//disegna bottone genera randomRectangle
 void drawRandomGeneration()
 {
 
-	DrawRectangleRec(random, WHITE);
-	DrawRectangleLinesEx(random, 1, BLACK);
+	DrawRectangleRec(randomRectangle, WHITE);
+	DrawRectangleLinesEx(randomRectangle, 1, BLACK);
 
 	int textX = MeasureText("Genera random", 20);
 
-	DrawText("Genera random", random.x + (random.width - textX) / 2, random.y + 15, 20, BLACK);
+	DrawText("Genera random", randomRectangle.x + (randomRectangle.width - textX) / 2, randomRectangle.y + 15, 20, BLACK);
 
 
 }
